@@ -77,6 +77,8 @@ GLuint vao = 0;
 GLuint buf_index = 0;
 
 #define MAX_NUM_TEXTURES 8
+#define MAX_GRANULARITY 1024
+
 /* Command line parameters */
 static int width = 0;
 static int height = 0;
@@ -469,7 +471,8 @@ print_usage()
         printf("\tresolution valid range is [1, 1024]\n");
         printf("\tblend_passes valid range is [1,42]\n");
         printf("\tnum_textures valid range is [1, %i]\n", MAX_NUM_TEXTURES);
-        printf("\tgranularity (the number of vertices per side) valid range is [2, 256]\n");
+        printf("\tgranularity (the number of vertices per side) valid range is [2, %i]\n",
+               MAX_GRANULARITY);
         printf("\tdraw_passes valid range is [1, 10]\n");
 }
 
@@ -503,7 +506,7 @@ parse_args(int argc, char **argv)
         }
 
         granularity = atoi(argv[4]);
-        if (granularity < 2 || granularity > 256) {
+        if (granularity < 2 || granularity > MAX_GRANULARITY) {
                 fprintf(stderr, "Wrong value for granularity: %s\n", argv[4]);
                 print_usage();
                 piglit_report_result(PIGLIT_FAIL);
