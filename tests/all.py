@@ -4860,7 +4860,7 @@ with profile.test_list.group_manager(
 resolution_set = ['32', '512']
 blend_passes_set = ['1', '42']
 num_textures_set = ['1', '8']
-granularity_set = ['8', '64', '128']
+granularity_set = ['8', '64', '128', '256', '512']
 draw_passes_set = ['1', '2', '3', '4', '7', '8']
 
 with profile.test_list.group_manager(
